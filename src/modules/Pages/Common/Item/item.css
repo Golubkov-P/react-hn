@@ -1,0 +1,31 @@
+.item {
+  width: 100%;
+  background-color: #fff;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.item__title, .item__link {
+  font-size: 20px;
+  color: #2b2b2b;
+}
+
+.item__link:hover {
+  color: #7f7f7f;
+  text-decoration: underline;
+}
+
+.item__link {
+  text-decoration: none;
+}
+
+.item__host {
+  font-size: 14px;
+  color: #7f7f7f;
+  margin-left: 5px; 
+}
+
+.item__description {
+  font-size: 16px;
+  color: #7f7f7f;
+}
