@@ -8,6 +8,7 @@ import NewPage from './Pages/NewPage';
 import AskPage from './Pages/AskPage';
 import JobPage from './Pages/JobPage';
 import ShowPage from './Pages/ShowPage';
+import UserPage from './Pages/UserPage';
 
 export default (
   <Route path='/' component={App}>
@@ -16,5 +17,6 @@ export default (
     <Route path='ask' component={AskPage} />
     <Route path='job' component={JobPage} />
     <Route path='show' component={ShowPage} />
+    <Route path='user/:userId' component={UserPage} />
   </Route>
 );
