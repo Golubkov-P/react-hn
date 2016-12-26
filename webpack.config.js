@@ -36,14 +36,13 @@ module.exports = {
   debug: process.env.NODE_ENV !== 'production',
   resolve: {
     root:               path.join(__dirname, 'src'),
-    modulesDirectories: ['node_modules'],
+    modulesDirectories: [ 'node_modules' ],
     extensions:         ['', '.js', '.jsx']
   },
   plugins,
   output: {
     path: `${__dirname}/public/assets/`,
     filename: jsName,
-    chunkFilename: '[id].chunk.js',
     publicPath
   },
   module: {
