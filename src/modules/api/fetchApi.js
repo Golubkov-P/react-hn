@@ -21,3 +21,14 @@ export function getStory(id) {
             return response.json();
           });
 }
+
+export function getUser(id) {
+  return fetch(`${apiHost}user/${id}.json?print=pretty`)
+          .then(response => {
+            if (response.status >= 400) {
+              throw new Error('Bad response from server');
+            }
+            return response.json();
+          });
+}
+
