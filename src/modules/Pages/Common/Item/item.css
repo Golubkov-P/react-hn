@@ -29,3 +29,12 @@
   font-size: 16px;
   color: #7f7f7f;
 }
+
+.item__user-link {
+  color: #15a3c6;
+}
+
+.item__user-link:hover {
+  color: #7f7f7f;
+  text-decoration: none;
+}

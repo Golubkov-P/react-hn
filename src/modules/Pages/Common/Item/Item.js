@@ -1,4 +1,6 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
+
 import moment from 'moment';
 
 import './item.css';
@@ -29,7 +31,8 @@ class Item extends Component {
         </div>
         <div className='item__description'>
           Score: { item.score } points
-          <span> | Autor: { item.by }</span>
+          <span> | Autor: </span>
+          <Link to={`/user/${item.by}`} className='item__user-link'>{ item.by }</Link>
           {
             item.descendants
               ? <span> | Comments: { item.descendants }</span>
