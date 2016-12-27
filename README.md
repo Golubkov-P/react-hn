@@ -1,4 +1,4 @@
-React Hacker News clien
+React Hacker News client
 
 ## Frameworks and Libraries
 
@@ -26,7 +26,7 @@ React Hacker News clien
 
 ## Notice
 
-If your system differes Window change this command in package.json:
+If your system differes of Windows change this command in package.json:
 
 ```
 "build": "set NODE_ENV='production' webpack -p"
