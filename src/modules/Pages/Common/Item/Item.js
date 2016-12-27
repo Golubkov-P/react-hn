@@ -17,18 +17,33 @@ class Item extends Component {
   render() {
     const { item } = this.props;
 
+    const TitleWithUrl = () => {
+      return (
+        <div className='item__title'>
+          <a href={item.url} className='item__link'>{ item.title }</a>
+          <span className='item__host'>
+            ({ this.formatUrl(item.url) })
+          </span>
+        </div>
+      );
+    };
+
+    const TitleWithoutUrl = () => {
+      return (
+        <div className='item__title'>
+          <Link to={`/item/${item.id}`} className='item__link'>{ item.title }</Link>
+        </div>
+      );
+    };
+
     return (
       <div className='item'>
-        <div className='item__title'>
-          <a href={item.url ? item.url : `/item/${item.id}`} className='item__link'>{ item.title }</a>
-          {
-            item.url
-              ? (<span className='item__host'>
-                  ({ this.formatUrl(item.url) })
-                </span>)
-              : null
-          }
-        </div>
+        {
+          item.url
+            ? TitleWithUrl()
+            : TitleWithoutUrl()
+        }
+
         <div className='item__description'>
           Score: { item.score } points
           <span> | Autor: </span>
