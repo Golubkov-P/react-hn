@@ -1,5 +1,7 @@
 React Hacker News client
 
+![alt text](https://github.com/Golubkov-P/react-hn/blob/master/react-hn.gif "React Hacker News preview")
+
 ## Frameworks and Libraries
 
 * React
