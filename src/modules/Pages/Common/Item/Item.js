@@ -50,7 +50,7 @@ class Item extends Component {
           <Link to={`/user/${item.by}`} className='item__user-link'>{ item.by }</Link>
           {
             item.descendants
-              ? <span> | Comments: { item.descendants }</span>
+              ? <span> | Comments: <Link to={`/item/${item.id}`} className='item__user-link'>{ item.descendants }</Link></span>
               : null
           }
           <span> | { moment(item.time, 'X').fromNow() }</span>
