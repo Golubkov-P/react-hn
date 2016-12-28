@@ -7,6 +7,13 @@ import Comment from '../Comment';
 import './Item.css';
 
 class Item extends Component {
+  formatUrl(url) {
+    return url
+            .split(':')[1]
+            .split('//')[1]
+            .split('/')[0];
+  }
+
   render() {
     const { item } = this.props;
 
