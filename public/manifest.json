@@ -1,0 +1,25 @@
+{
+  "name": "React-HN",
+  "short_name": "React-HN",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "Modern Hacker News client",
+  "icons": [{
+    "src": "fav/favicon-32x32.png",
+    "sizes": "32x32",
+    "type": "image/png"
+  }, {
+    "src": "fav/fav/android-chrome-144x144.png",
+    "sizes": "144x144",
+    "type": "image/png"
+  }, {
+    "src": "fav/android-chrome-192x192.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  }, {
+    "src": "fav/android-chrome-384x384.png",
+    "sizes": "384x384",
+    "type": "image/png"
+  }]
+}
