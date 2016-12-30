@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>React HN</title>
@@ -14,12 +15,28 @@
   <meta name="apple-mobile-web-app-title" content="React-HN">
   <meta name="application-name" content="React-HN">
   <meta name="theme-color" content="#0786bd">
-  
+
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
 </head>
+
 <body>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('/sw.js').then(function (registration) {
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }).catch(function (err) {
+          console.log('ServiceWorker registration failed: ', err);
+        });
+      });
+    } else {
+      console.log('ServiceWorker is not support');
+    }
+  </script>
+
   <div id="app"></div>
-  
-  <script src="assets/bundle.js"></script>
+
+<script src="assets/bundle.js"></script>
 </body>
+
 </html>
