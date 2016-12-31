@@ -47,6 +47,7 @@
 
 .comment__body {
   margin-top: 10px;
+  word-break: break-all;
 }
 
 .hidden {
