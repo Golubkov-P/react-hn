@@ -37,7 +37,11 @@ module.exports = {
   resolve: {
     root:               path.join(__dirname, 'src'),
     modulesDirectories: [ 'node_modules' ],
-    extensions:         ['', '.js', '.jsx']
+    extensions:         ['', '.js', '.jsx'],
+    alias: {
+      Api: path.resolve(__dirname, 'src/api/'),
+      Common: path.resolve(__dirname, 'src/modules/Common')
+    }
   },
   plugins,
   output: {
@@ -70,6 +74,7 @@ module.exports = {
     headers: { 'Access-Control-Allow-Origin': '*' },
     contentBase: path.join(__dirname, 'public'),
     historyApiFallback: true,
+    host: '0.0.0.0',
     hot: true,
     port: 8050,
     publicPath: '/public/assets/',
