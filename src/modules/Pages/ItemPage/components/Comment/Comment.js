@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import moment from 'moment';
 import classNames from 'classnames';
 
-import api from '../../../../api';
+import api from 'Api';
 
 import './Comment.css';
 
