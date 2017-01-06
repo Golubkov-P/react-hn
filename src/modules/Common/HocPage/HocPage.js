@@ -4,8 +4,6 @@ import Spinner from 'Common/Spinner';
 
 import api from 'Api';
 
-let pagination = 0;
-
 export default (apiString) => (WrappedPage) => {
   return class HocPage extends Component {
     constructor() {
@@ -16,6 +14,8 @@ export default (apiString) => (WrappedPage) => {
         isLoadMore: false
       };
 
+      this.pagination = 0;
+
       this.loadItem = this.loadItem.bind(this);
       this.loadItemsList = this.loadItemsList.bind(this);
       this.loadMore = this.loadMore.bind(this);
@@ -23,7 +23,6 @@ export default (apiString) => (WrappedPage) => {
 
     componentDidMount() {
       this.loadItemsList('isLoading');
-      console.log('mounting');
       window.addEventListener('scroll', this.loadMore);
     }
 
@@ -32,14 +31,14 @@ export default (apiString) => (WrappedPage) => {
     }
 
     loadItemsList(loadType) {
-      const startIndex = pagination;
+      const startIndex = this.pagination;
 
-      pagination = pagination + 10;
+      this.pagination = this.pagination + 10;
 
       api.getStoriesList(apiString)
         .then(result => {
-          for (let i = startIndex; i <= pagination; i++) {
-            if (i === pagination) {
+          for (let i = startIndex; i <= this.pagination; i++) {
+            if (i === this.pagination) {
               this.setState({
                 [loadType]: false
               });
@@ -56,7 +55,7 @@ export default (apiString) => (WrappedPage) => {
 
       const newItem = [];
 
-      api.getItem(id)
+      api.getItem('item', id)
         .then(result => {
           if (result === null) {
             return;
