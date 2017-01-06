@@ -20,6 +20,8 @@ class Header extends Component {
             <Link to='/show' className='menu__link link'>show</Link>
             <span className='splitter'>|</span>
             <Link to='/job' className='menu__link link'>job</Link>
+            <span className='splitter'>|</span>
+            <a href='https://github.com/Golubkov-P/react-hn' className='menu__link link'>GITHUB</a>
           </div>
         </div>
       </div>
