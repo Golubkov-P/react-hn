@@ -1,46 +1,11 @@
 import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
-import moment from 'moment';
 
 import Comment from '../Comment';
-
-import './Item.css';
+import ItemHoc from 'Common/ItemHoc';
 
 class Item extends Component {
-  formatUrl(url) {
-    return url
-            .split(':')[1]
-            .split('//')[1]
-            .split('/')[0];
-  }
-
   render() {
     const { item } = this.props;
-
-    const TitleWithUrl = () => {
-      return (
-        <div className='item__title'>
-          <a href={item.url} className='item__link'>{item.title}</a>
-          <span className='item__host'>
-            ({this.formatUrl(item.url)})
-          </span>
-        </div>
-      );
-    };
-
-    const TitleWithoutUrl = () => {
-      return (
-        <div className='item__title'>
-          {item.title}
-        </div>
-      );
-    };
-
-    const createMarkup = () => {
-      if (item.text) {
-        return { __html: item.text };
-      }
-    };
 
     const renderComments = () => {
       return item.kids.map((id, indx) => {
@@ -51,25 +16,12 @@ class Item extends Component {
     return (
       <div>
         <div className='item'>
-          {
-            item.url
-              ? TitleWithUrl()
-              : TitleWithoutUrl()
-          }
+          { this.props.title }
+          { this.props.description }
 
-          <div className='item__description'>
-            Score: {item.score} points
-            <span> | Autor: </span>
-            <Link to={`/user/${item.by}`} className='item__user-link'>{item.by}</Link>
-            <span> | { moment(item.time, 'X').fromNow() }</span>
-          </div>
           <div className='item__text'>
-            {item.text ? <div dangerouslySetInnerHTML={createMarkup()} /> : null}
+            <div dangerouslySetInnerHTML={{ __html: item.text }} />
           </div>
-        </div>
-
-        <div className='item__comment-stats'>
-          Comments: {item.descendants}
         </div>
 
         { item.kids ? renderComments() : null }
@@ -87,7 +39,9 @@ Item.propTypes = {
     score: PropTypes.number,
     url: PropTypes.string,
     by: PropTypes.string
-  })
+  }),
+  title: PropTypes.element.isRequired,
+  description: PropTypes.element.isRequired
 };
 
-export default Item;
+export default ItemHoc(Item);

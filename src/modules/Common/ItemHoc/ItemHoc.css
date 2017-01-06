@@ -38,3 +38,13 @@
   color: #7f7f7f;
   text-decoration: none;
 }
+
+.item__text {
+  margin-top: 10px;
+}
+
+.item__comment-stats {
+  margin: 10px 0;
+  font-size: 18px;
+  color: #7f7f7f;
+}
