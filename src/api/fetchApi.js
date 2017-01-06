@@ -12,8 +12,8 @@ export function getStoriesList(listOf) {
           });
 }
 
-export function getItem(id) {
-  return fetch(`${apiHost}item/${id}.json?print=pretty`)
+export function getItem(itemType, id) {
+  return fetch(`${apiHost}${itemType}/${id}.json?print=pretty`)
           .then(response => {
             if (response.status >= 400) {
               throw new Error('Bad response from server');
