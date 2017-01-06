@@ -53,3 +53,8 @@
 .hidden {
   display: none;
 }
+
+.comment__deleted {
+  font-size: 16px;
+  color: #7f7f7f;
+}

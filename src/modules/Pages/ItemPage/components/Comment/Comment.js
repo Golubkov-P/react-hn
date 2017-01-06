@@ -3,34 +3,24 @@ import { Link } from 'react-router';
 import moment from 'moment';
 import classNames from 'classnames';
 
-import api from 'Api';
+import CommentChildren from './CommentChildren';
+import CommentLoader from 'Common/CommentLoader';
 
 import './Comment.css';
 
 class Comment extends Component {
+  static propTypes = {
+    comment: PropTypes.object.isRequired
+  }
+
   constructor() {
     super();
 
     this.state = {
-      comment: {},
       isOpen: true
     };
 
     this.handleOpening = this.handleOpening.bind(this);
-  }
-
-  componentDidMount() {
-    const { id } = this.props;
-
-    api
-      .getStory(id)
-      .then(result => {
-        if (result === null) return;
-
-        this.setState({
-          comment: result
-        });
-      });
   }
 
   handleOpening() {
@@ -40,23 +30,20 @@ class Comment extends Component {
   }
 
   render() {
-    const { comment, isOpen } = this.state;
+    const { isOpen } = this.state;
+    const { comment } = this.props;
+    const hiddenClass = classNames({ hidden: !isOpen });
 
-    const commentChildrenClass = classNames('comment__children',
-      { hidden: !isOpen }
-    );
+    let childrenComments;
 
-    const createMarkup = () => {
-      if (comment.text) {
-        return { __html: comment.text };
-      }
-    };
-
-    const renderSubCommnets = () => {
-      return comment.kids.map((id, indx) => {
-        return <Comment key={indx} id={id} />;
-      });
-    };
+    if (comment.kids) {
+      childrenComments = (
+        <CommentChildren
+          kids={comment.kids}
+          hiddenClass={hiddenClass}
+        />
+      );
+    }
 
     return (
       <div className='comment'>
@@ -79,23 +66,16 @@ class Comment extends Component {
             </div>
           </div>
 
-          {isOpen && (
-            <div className='comment__body'>
-              { comment.text && <div dangerouslySetInnerHTML={createMarkup()} />}
-            </div>
-          )}
+          <div className={`comment__body ${hiddenClass}`}>
+            <div dangerouslySetInnerHTML={{ __html: comment.text }} />
+          </div>
         </div>
 
-        <div className={commentChildrenClass}>
-          {comment.kids && renderSubCommnets()}
-        </div>
+        { childrenComments }
+
       </div>
     );
   }
 }
 
-Comment.propTypes = {
-  id: PropTypes.number.isRequired
-};
-
-export default Comment;
+export default CommentLoader(Comment);
