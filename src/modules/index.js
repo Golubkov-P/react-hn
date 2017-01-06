@@ -18,7 +18,7 @@ export default (
     <Route path='ask' component={AskPage} />
     <Route path='job' component={JobPage} />
     <Route path='show' component={ShowPage} />
-    <Route path='user/:userId' component={UserPage} />
+    <Route path='user/:itemId' component={UserPage} />
     <Route path='item/:itemId' component={ItemPage} />
   </Route>
 );
