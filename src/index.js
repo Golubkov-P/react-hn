@@ -1,7 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import { Router, browserHistory } from 'react-router';
+import Router from 'react-router/lib/Router';
+import browserHistory from 'react-router/lib/browserHistory';
 
 import routes from './modules';
 
