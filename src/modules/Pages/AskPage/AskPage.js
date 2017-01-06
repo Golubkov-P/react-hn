@@ -24,4 +24,4 @@ AskPage.propTypes = {
   items: PropTypes.array.isRequired
 };
 
-export default HocPage('jobstories')(AskPage);
+export default HocPage('askstories')(AskPage);
