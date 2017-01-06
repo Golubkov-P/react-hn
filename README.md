@@ -2,6 +2,16 @@ React Hacker News client
 
 ![alt text](https://github.com/Golubkov-P/react-hn/blob/master/react-hn.gif "React Hacker News preview")
 
+## Features
+
+* Es6
+* Infinity scroll
+* New, Ask, Show, Job pages
+* Compact user profile
+* Stories page with comments
+* Show/hide comments
+* Information about deleted comments
+
 ## Frameworks and Libraries
 
 * React
@@ -12,11 +22,6 @@ React Hacker News client
 
 * Webpack
 * webpack-dev-server
-
-## Features
-
-* Es6
-* Infinity scroll
 
 ## Usage
 
