@@ -1,48 +1,22 @@
 import React,  { Component, PropTypes } from 'react';
 
+import HocItemPages from 'Common/HocItemPages';
 import Item from './components/Item';
 
-import api from '../../api';
-
 class ItemPage extends Component {
-  constructor() {
-    super();
-    this.state = {
-      story: {}
-    };
-  }
-
-  componentDidMount() {
-    const { itemId } = this.props.params;
-
-    api
-      .getStory(itemId)
-      .then(result => {
-        if (result === null) {
-          return;
-        }
-
-        this.setState({
-          story: result
-        });
-      });
-  }
-
   render() {
-    const { story } = this.state;
+    const { item } = this.props;
 
     return (
       <div>
-        { story.id ? <Item item={story} /> : null }
+        <Item item={item} />
       </div>
     );
   }
 }
 
 ItemPage.propTypes = {
-  params: PropTypes.shape({
-    itemId: PropTypes.string.isRequired
-  })
+  item: PropTypes.object.isRequired
 };
 
-export default ItemPage;
+export default HocItemPages('item')(ItemPage);
