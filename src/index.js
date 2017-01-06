@@ -1,15 +1,11 @@
 import React from 'react';
-import { render } from 'react-dom';
-
 import Router from 'react-router/lib/Router';
-import browserHistory from 'react-router/lib/browserHistory';
+import { browserHistory } from 'react-router';
+import ReactDOM from 'react-dom';
 
 import routes from './modules';
 
-const container = document.getElementById('app');
-
-render(
-  <Router routes={routes} history={browserHistory} />,
-  container
+ReactDOM.render(
+  <Router history={browserHistory} routes={routes} />,
+  document.querySelector('#app')
 );
-
