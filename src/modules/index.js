@@ -11,6 +11,7 @@ import JobPage from './Pages/JobPage';
 import ShowPage from './Pages/ShowPage';
 import UserPage from './Pages/UserPage';
 import ItemPage from './Pages/ItemPage';
+import Page404 from './Pages/Page404';
 
 export default (
   <Route path='/' component={App}>
@@ -21,5 +22,7 @@ export default (
     <Route path='show' component={ShowPage} />
     <Route path='user/:itemId' component={UserPage} />
     <Route path='item/:itemId' component={ItemPage} />
+
+    <Route path='*' component={Page404} />
   </Route>
 );
