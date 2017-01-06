@@ -17,6 +17,12 @@
   align-items: center;
 }
 
+@media all and (max-width: 420px) {
+  .header__container {
+    flex-direction: column;
+  }
+}
+
 .logo {
   color: #fff;
   font-size: 24px;
