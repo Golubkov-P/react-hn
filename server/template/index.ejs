@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <title>React HN</title>
-  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
-  <link rel="stylesheet" href="<%= baseUrl %>assets/styles.css">
+  <link disabled href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" media="none">
+  <link disabled rel="stylesheet" href="<%= baseUrl %>assets/styles.css" media="none" disabled>
 
   <link rel="apple-touch-icon" sizes="180x180" href="fav/apple-touch-icon.png">
   <link rel="icon" type="image/png" href="fav/favicon-32x32.png" sizes="32x32">
@@ -37,7 +37,16 @@
 
   <div id="app"><%- markup %></div>
 
-<script src="<%= baseUrl %>assets/main.js"></script>
+<script src="<%= baseUrl %>assets/main.js" async></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var links = document.querySelectorAll('link[rel=stylesheet]');
+    links.forEach(function(link) {
+      link.media = '';
+      link.disabled = false;
+    });
+  });
+</script>
 </body>
 
 </html>
