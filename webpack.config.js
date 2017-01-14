@@ -1,35 +1,35 @@
 global.Promise         = require('bluebird');
 
-var webpack            = require('webpack');
-var path               = require('path');
-var ExtractTextPlugin  = require('extract-text-webpack-plugin');
-var CleanWebpackPlugin = require('clean-webpack-plugin');
+const webpack            = require('webpack');
+const path               = require('path');
+const ExtractTextPlugin  = require('extract-text-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 
-var publicPath         = '/public/assets/';
-var cssName            = process.env.NODE_ENV === 'production' ? 'styles-[hash].css' : 'styles.css';
-var jsName             = process.env.NODE_ENV === 'production' ? 'bundle-[hash].js' : 'bundle.js';
+const cacheConfig = require('./sw-precache-config');
 
-var plugins = [
+const publicPath         = '/public/assets/';
+const cssName            = process.env.NODE_ENV === 'production' ? 'styles.css' : 'styles.css';
+const jsName             = process.env.NODE_ENV === 'production' ? '[name].js' : '[name].js';
+
+const isProd = plugin => process.env.NODE_ENV === 'production' ? plugin : undefined;
+
+const plugins = [
   new webpack.DefinePlugin({
     'process.env': {
-      BROWSER:  JSON.stringify(true),
       NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')
     }
   }),
-  new ExtractTextPlugin(cssName)
+  new ExtractTextPlugin(cssName),
+  new SWPrecacheWebpackPlugin(cacheConfig),
+  isProd(new CleanWebpackPlugin([ 'public/assets/' ], {
+    root: __dirname,
+    verbose: true,
+    dry: false
+  })),
+  isProd(new webpack.optimize.DedupePlugin()),
+  isProd(new webpack.optimize.OccurrenceOrderPlugin())
 ];
-
-if (process.env.NODE_ENV === 'production') {
-  plugins.push(
-    new CleanWebpackPlugin([ 'public/assets/' ], {
-      root: __dirname,
-      verbose: true,
-      dry: false
-    })
-  );
-  plugins.push(new webpack.optimize.DedupePlugin());
-  plugins.push(new webpack.optimize.OccurrenceOrderPlugin());
-}
 
 module.exports = {
   entry: ['babel-polyfill', './src/index.js'],
