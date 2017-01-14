@@ -3,6 +3,7 @@
   "short_name": "React-HN",
   "start_url": ".",
   "display": "standalone",
+  "theme_color": "#0786bd",
   "background_color": "#fff",
   "description": "Modern Hacker News client",
   "icons": [{
