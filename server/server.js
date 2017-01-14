@@ -5,7 +5,7 @@ import renderOnServer from './middleware/renderOnServer';
 
 const app = express();
 
-app.use(express.static('./'));
+app.use(express.static('./public'));
 
 app.set('views', path.join(__dirname, '/template'));
 
