@@ -36,7 +36,11 @@ React Hacker News client
 If your system differes of Windows change this command in package.json:
 
 ```
-"build": "set NODE_ENV='production' webpack -p"
+"build": "set NODE_ENV=production&& webpack -p"
+"nodemon-prod": "set NODE_ENV=production&& nodemon server.js"
+```
 to 
-"build": "NODE_ENV='production' webpack -p"
+```
+"build": "NODE_ENV=production&& webpack -p"
+"nodemon-prod": "NODE_ENV=production&& nodemon server.js"
 ``` 
